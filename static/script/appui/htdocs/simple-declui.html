@@ -2,7 +2,7 @@
 <div data-bind="taltype:'label'" id="helloWorldLabel"> Hello World </div>
 <div data-bind="taltype:'label'" id="welcomeLabel"> Welcome to your first TAL application!</div>
 <ul id="verticallist" data-bind="taltype:'verticallist', foreach: buttons">
-    <div data-bind="taltype:'button'"> Button </div>
+    <div data-bind="taltype:'button', text:name, select:selected"> Button </div>
 </ul>
 
 

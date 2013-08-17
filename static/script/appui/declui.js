@@ -8,8 +8,13 @@ require.def('sampleapp/appui/declui',
     ],
     function(Class, Label, Button, VerticalList ) {
 
+        var DeclUI = {};
+
+
+
+
         return Class.extend({
-            init: function( rootWidget,layout ) {
+            init: function( rootWidget, model, layout ) {
                 var self;
                 self = this;
 
@@ -18,15 +23,58 @@ require.def('sampleapp/appui/declui',
 
                     loader.innerHTML = layout;
 
-                    var model = {};
+                    ko.bindingHandlers.select = {
+                        init: function( elem, valueAccessor ){
+                           elem.talWidget.addEventListener( "select", function( evt ){
+                               valueAccessor( evt );
+                           });
+                        },
 
-                    model.buttons = [
-                        { name : "button1" },
-                        { name : "button2" },
-                        { name : "button3" },
-                    ];
+                        update: function( elem, valueAccessor ){
 
-                    var focusButton;
+                        }
+                    };
+
+                    ko.bindingHandlers.text = {
+                        init : function( elem, valueAccessor ){
+                            if( elem.talWidget ){
+                                var i;
+                                var childWidgets = elem.talWidget.getChildWidgets();
+
+                                var textSet = false;
+                                if( childWidgets ){
+                                    for( i = 0; i < childWidgets.length; i++ ){
+                                        if( childWidgets[ i ] instanceof Label ){
+                                            childWidgets[ i ].setText( valueAccessor() );
+                                            textSet = true;
+                                        }
+                                    }
+                                }
+                                if( !textSet ){
+                                    elem.talWidget.appendChildWidget( new Label( valueAccessor() ) )
+                                }
+                            }
+                        },
+                        update: function( elem, valueAccessor ){
+                            if( elem.talWidget ){
+                                var i;
+                                var childWidgets = elem.talWidget.getChildWidgets();
+
+                                var textSet = false;
+                                if( childWidgets ){
+                                    for( i = 0; i < childWidgets.length; i++ ){
+                                        if( childWidgets[ i ] instanceof Label ){
+                                            childWidgets[ i ].setText( valueAccessor() );
+                                            textSet = true;
+                                        }
+                                    }
+                                }
+                                if( !textSet ){
+                                    elem.talWidget.appendChildWidget( new Label( valueAccessor() ) )
+                                }
+                            }
+                        }
+                    };
 
                     ko.bindingHandlers.taltype = {
                         init : function( elem, valueAccessor ){

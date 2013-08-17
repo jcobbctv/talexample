@@ -25,7 +25,7 @@
 require.def("sampleapp/appui/components/simpledeclui",
     [
         "antie/widgets/component",
-        "sampleapp/appui/declui",
+        "antie/declui/uibuild",
         'text!sampleapp/appui/htdocs/simple-declui.html',
     ],
     function (Component, DeclUI, LayoutData ) {
@@ -39,48 +39,26 @@ require.def("sampleapp/appui/components/simpledeclui",
                 // It is important to call the constructor of the superclass
                 this._super("simplecomponent");
 
-                var declui = new DeclUI( this, LayoutData );
+                var model = {
+                    buttons : [
+                        {
+                          name: ko.observable( "Button1" ),
+                          selected: function(){
+                              model.buttons[ 0 ].name( "Badooosh" );
+                              console.log( "button clicked" );
+                          }
+                        },
+                        {name: "Button2",
+                            selected: function(){
+                                console.log( "button clicked" );
+                            }},
+                        {name: "Button3",
+                            selected: function(){
+                                console.log( "button clicked" );
+                            }}]
+                };
 
-                var model = {};
-
-                model.buttons = [
-                    { name : "button1" },
-                    { name : "button2" },
-                    { name : "button3" },
-                ];
-
-//                ko.applyBindings( model, loader );
-
-
-               // declui.createUI( this );
-
-
-//                // Add the labels to the component
-//                helloWorldLabel = new Label("helloWorldLabel", "Hello World");
-//                this.appendChildWidget(helloWorldLabel);
-//
-//                welcomeLabel = new Label("welcomeLabel", "Welcome to your first TAL application!");
-//                this.appendChildWidget(welcomeLabel);
-//
-//                // Create the buttons and add select event listeners
-//                var carouselButton = new Button();
-//                carouselButton.addEventListener("select", function(evt){
-//                    self.getCurrentApplication().pushComponent("maincontainer", "sampleapp/appui/components/simplecarouselcomponent");
-//                });
-//                carouselButtonLabel = new Label("Simple Carousel Example");
-//                carouselButton.appendChildWidget(carouselButtonLabel);
-//
-//                var playerButton = new Button();
-//                playerButton.addEventListener("select", function(evt){
-//                    self.getCurrentApplication().pushComponent("maincontainer", "sampleapp/appui/components/simplevideocomponent");
-//                });
-//                playerButton.appendChildWidget(new Label("Simple Video Player Example"));
-//
-//                // Create a vertical list and append the buttons to navigate within the list
-//                verticalListMenu = new VerticalList("mainMenuList");
-//                verticalListMenu.appendChildWidget(carouselButton);
-//                verticalListMenu.appendChildWidget(playerButton);
-//                this.appendChildWidget(verticalListMenu);
+                DeclUI.createUI( this, model, LayoutData );
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component
