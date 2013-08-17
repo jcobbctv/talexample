@@ -25,9 +25,10 @@
 require.def('sampleapp/appui/sampleapp',
     [
         'antie/application',
-        'antie/widgets/container'
+        'antie/widgets/container',
+        'text!sampleapp/appui/htdocs/test.html'
     ],
-    function(Application, Container) {
+    function(Application, Container, Html ) {
     
         return Application.extend({
             init: function(appDiv, styleDir, imgDir, callback) {
@@ -49,7 +50,7 @@ require.def('sampleapp/appui/sampleapp',
                 // Called from run() as we need the framework to be ready beforehand.
                 this._setRootContainer();
                 // Create maincontainer and add simple component to it
-                this.addComponentContainer("maincontainer", "sampleapp/appui/components/simple");
+                this.addComponentContainer("maincontainer", "sampleapp/appui/components/simpledeclui");
             }
         });     
     }

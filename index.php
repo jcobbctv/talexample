@@ -40,7 +40,7 @@ if (!file_exists('antie/php/antieframework.php')) {
 require('antie/php/antieframework.php');
 
 // Enable javascript cache busting (this should be disabled in production mode)
-$javascript_cache_busting = true;
+$javascript_cache_busting = false;
 
 // Set up application ID and path to framework configuration directory
 $application_id = "sampleapp";
@@ -118,6 +118,8 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 
     <!-- Load require.js -->
     <script type="text/javascript" src="antie/static/script/lib/require.js"></script>
+    <script type="text/javascript" src="antie/static/script/lib/knockout.js"></script>
+
 
     <!-- Load application base style sheet -->
     <link rel="stylesheet" href="static/style/base.css"/>
