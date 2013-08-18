@@ -39,26 +39,38 @@ require.def("sampleapp/appui/components/simpledeclui",
                 // It is important to call the constructor of the superclass
                 this._super("simplecomponent");
 
+
+                var buttonsArray = ko.observableArray( [
+                    { name : ko.observable( "Button1"),
+                      selected : function(){
+                          model.helloWorldLabel( "Button1 Clicked");
+                          console.log( "Button1 Clicked" );
+                      }},
+                    { name : ko.observable( "Button2"),
+                        selected : function(){
+                            model.helloWorldLabel( "Button2 Clicked");
+                            console.log( "Button2 Clicked" );
+                        }},
+                    { name : ko.observable( "Button3"),
+                        selected : function(){
+                            model.helloWorldLabel( "Button3 Clicked");
+                            console.log( "Button3 Clicked" );
+                        }}
+                ] );
+
+
                 var model = {
-                    buttons : [
-                        {
-                          name: ko.observable( "Button1" ),
-                          selected: function(){
-                              model.buttons[ 0 ].name( "Badooosh" );
-                              console.log( "button clicked" );
-                          }
-                        },
-                        {name: "Button2",
-                            selected: function(){
-                                console.log( "button clicked" );
-                            }},
-                        {name: "Button3",
-                            selected: function(){
-                                console.log( "button clicked" );
-                            }}]
+                    helloWorldLabel : ko.observable( "Hello World!" ),
+                    buttons :  buttonsArray
                 };
 
-                DeclUI.createUI( this, model, LayoutData );
+                var updateCount = 0;
+                setInterval( function(){
+                    model.helloWorldLabel( "Updated:" + updateCount++ );
+                    console.log( model.buttons()[ 0 ].name() );
+                }, 1000 )
+
+                this.koDom = DeclUI.createUI( this, model, LayoutData );
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component

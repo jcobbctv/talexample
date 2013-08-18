@@ -1,19 +1,10 @@
-
-<div data-bind="taltype:'label'" id="helloWorldLabel"> Hello World </div>
-<div data-bind="taltype:'label'" id="welcomeLabel"> Welcome to your first TAL application!</div>
-<ul id="verticallist" data-bind="taltype:'verticallist', foreach: buttons">
-    <div data-bind="taltype:'button', text:name, select:selected"> Button </div>
+<div data-bind="type:'label', text:helloWorldLabel" id="helloWorldLabel"> Hello World </div>
+<div data-bind="type:'label'" id="welcomeLabel"> Welcome to your first TAL application!</div>
+<ul data-bind="type:'horizontallist'">
+    <ul data-bind="type:'verticallist', foreach: buttons">
+        <div data-bind="type:'button', text:name, select:selected"> Button </div>
+    </ul>
+    <ul data-bind="type:'verticallist', foreach: buttons">
+        <div data-bind="type:'button', text:name, select:selected"> Button </div>
+    </ul>
 </ul>
-
-
-<!--<ul data-taltype="verticallist" id="mainMenuList">-->
-    <!--<div data-taltype="button">Simple Carousel Example</div>-->
-    <!--<div data-taltype="button">Simple Video Example</div>-->
-    <!--<div data-taltype="button">This is another button</div>-->
-    <!--<div data-taltype="button">and another button</div>-->
-
-    <!--<ul data-bind="foreach: buttons">-->
-        <!--<div data-taltype="button" data-bind="text: name"></div>-->
-    <!--</ul>-->
-<!--</ul>-->
-
