@@ -25,10 +25,13 @@
 require.def("sampleapp/appui/components/simple",
     [
         "antie/widgets/component",
-        "antie/declui/uibuild",
-        'text!sampleapp/appui/htdocs/main.html',
+        "antie/declui/declui",
+        "antie/declui/observable",
+        "antie/declui/observable-array",
+        'text!sampleapp/appui/htdocs/main.xml',
+        'text!sampleapp/appui/htdocs/alt.xml'
     ],
-    function (Component, DeclUI, MainHTML ) {
+    function (Component, DeclUI, O, OA, MainXML, AltXML ) {
 
         // All components extend Component
         return Component.extend({
@@ -40,24 +43,34 @@ require.def("sampleapp/appui/components/simple",
                 this._super("simplecomponent");
 
                 var model = {
-
-                    go : function(){
-                        //model.labels.splice( 1,1 );
-                        //console.log( model.labels() );
-                        //model.labels.push( { labeltext : "dddddddd" } );
-                        model.labels.pop();
-                    },
-
-                    labels:ko.observableArray([
-                        { labeltext : "aaaaaaaa" },
-                        { labeltext : "bbbbbbbb" },
-                        { labeltext : "cccccccc" },
-                    ])
+                    buttonName : new O( "Button1" ),
+                    buttons : new OA( [
+                        { name : new O("One"), select : new O( select ) },
+                        { name : new O("Main View"), select : new O( mainView ) },
+                        { name : new O("Alt View"), select : new O( altView ) }
+                    ] )
                 };
 
-                this.koDom = DeclUI.createUI( this, model, MainHTML );
+                function altView(){
+                   self.removeChildWidgets();
+                    DeclUI.buildUI( self, model, AltXML );
+                }
 
+                function mainView(){
+                    self.removeChildWidgets();
+                    DeclUI.buildUI( self, model, MainXML );
+                }
 
+                function select(){
+                    model.buttons.unshift( { name : new O( "New"), select : new O( select ) } );
+                }
+
+                DeclUI.buildUI( this, model, AltXML );
+
+                setInterval( function(){
+                        model.buttons()[ 0 ].name( "Changed" );
+
+                    }, 5000 )
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component

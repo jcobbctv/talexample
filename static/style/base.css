@@ -147,6 +147,10 @@ initial element background in the base stylesheet, not in dynamically loaded sty
     margin: 2% auto 0 auto;
 }
 
+.rounded{
+    border-radius: 40px 40px 40px 40px
+}
+
 .button {
     background-color: #DCDCDC;
     display: block;

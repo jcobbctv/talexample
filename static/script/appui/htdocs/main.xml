@@ -1,0 +1,5 @@
+<view>
+    <vlist bind="foreach:buttons">
+        <button bind="text:name, select:select">Test Button</button>
+    </vlist>
+</view>

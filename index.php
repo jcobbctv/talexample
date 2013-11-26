@@ -118,7 +118,6 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 
     <!-- Load require.js -->
     <script type="text/javascript" src="antie/static/script/lib/require.js"></script>
-    <script type="text/javascript" src="antie/static/script/lib/knockout.js"></script>
 
     <!-- Load application base style sheet -->
     <link rel="stylesheet" href="static/style/base.css"/>
