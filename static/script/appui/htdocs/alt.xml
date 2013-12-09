@@ -1,5 +1,5 @@
 <view>
     <hlist bind="foreach:buttons">
-        <button class="rounded" bind="text:name, select:select">Test Button</button>
+        <button bind="text:name, select:select">Test Button</button>
     </hlist>
 </view>

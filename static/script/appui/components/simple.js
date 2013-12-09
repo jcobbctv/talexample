@@ -43,9 +43,9 @@ require.def("sampleapp/appui/components/simple",
                 this._super("simplecomponent");
 
                 var model = {
-                    buttonName : new O( "Button1" ),
                     buttons : new OA( [
-                        { name : new O("One"), select : new O( select ) },
+                        { name : new O("Add Button"), select : new O( select ) },
+                        { name : new O("Change Me"), select : new O( select ) },
                         { name : new O("Main View"), select : new O( mainView ) },
                         { name : new O("Alt View"), select : new O( altView ) }
                     ] )
@@ -62,15 +62,14 @@ require.def("sampleapp/appui/components/simple",
                 }
 
                 function select(){
-                    model.buttons.unshift( { name : new O( "New"), select : new O( select ) } );
+                    model.buttons.unshift( { name : new O( "Change Me"), select : new O( select ) } );
                 }
 
                 DeclUI.buildUI( this, model, AltXML );
 
                 setInterval( function(){
-                        model.buttons()[ 0 ].name( "Changed" );
-
-                    }, 5000 )
+                        model.buttons()[ 1 ].name( "Changed" );
+                    }, 5000 );
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component
