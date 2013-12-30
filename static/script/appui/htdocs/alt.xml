@@ -1,7 +1,7 @@
 <view>
     <hlist bind="foreach:buttons">
-        <button bind="select:select">
-            <label bind="text:name"></label>
-        </button>
+         <button bind="select:select">
+                <label bind="text:name"></label>
+         </button>
     </hlist>
 </view>
