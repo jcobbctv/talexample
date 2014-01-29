@@ -1,4 +1,5 @@
 <view>
+    <label bind="text:'hello'"></label>
     <hlist bind="foreach:buttons">
          <button bind="select:select">
                 <label bind="text:name"></label>

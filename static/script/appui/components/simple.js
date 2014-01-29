@@ -44,7 +44,7 @@ require.def("sampleapp/appui/components/simple",
 
                 var model = {
                     buttons : new OA( [
-                        { name : new O("Add Button"), select : new O( select ) },
+                        { name : "Add Button", select : new O( select ) },
                         { name : new O("Change Me"), select : new O( select ) },
                         { name : new O("Main View"), select : new O( mainView ) },
                         { name : new O("Alt View"), select : new O( altView ) }
