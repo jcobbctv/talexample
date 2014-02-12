@@ -1,5 +1,5 @@
 <view>
     <vlist bind="foreach:buttons">
-        <button class="rounded" bind="text:name, select:select">Test Button</button>
+        <button class="rounded" bind="text:name, select:$parent.select">Test Button</button>
     </vlist>
 </view>

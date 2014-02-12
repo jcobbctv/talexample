@@ -22,55 +22,38 @@
  * Please contact us for an alternative licence
  */
 
-require.def("sampleapp/appui/components/simple",
+require.def("sampleapp/appui/components/less-simple",
     [
         "antie/widgets/component",
         "antie/declui/declui",
         "antie/declui/observable",
         "antie/declui/observable-array",
-        'text!sampleapp/appui/htdocs/main.xml',
-        'text!sampleapp/appui/htdocs/alt.xml'
+        'text!sampleapp/appui/htdocs/board0.xml',
     ],
-    function (Component, DeclUI, O, OA, MainXML, AltXML ) {
+    function (Component, DeclUI, O, OA, Layout ) {
 
         // All components extend Component
         return Component.extend({
             init: function () {
-                var self, helloWorldLabel, welcomeLabel, carouselButtonLabel, verticalListMenu;
+                var self;
 
                 self = this;
                 // It is important to call the constructor of the superclass
                 this._super("simplecomponent");
 
                 var model = {
-                    select : select,
                     buttons : new OA( [
-                        { name : new O( "Add Button" ), select : select },
-                        { name : new O("Change Me"), select : select },
-                        { name : new O("Main View"), select : mainView },
-                        { name : new O("Alt View"), select : altView}
+                        { imageurl: "static/img/k1.jpeg" },
+                        { imageurl: "static/img/k2.jpeg" },
+                        { imageurl: "static/img/k3.jpeg" },
+                        { imageurl: "static/img/k4.jpeg" },
+                        { imageurl: "static/img/k5.jpeg" },
+                        { imageurl: "static/img/k6.jpeg" },
+                        { imageurl: "static/img/k7.jpeg" }
                     ] )
                 };
 
-                function altView(){
-                   self.removeChildWidgets();
-                    DeclUI.buildUI( self, model, AltXML );
-                }
-
-                function mainView(){
-                    self.removeChildWidgets();
-                    DeclUI.buildUI( self, model, MainXML );
-                }
-
-                function select(){
-                    model.buttons.unshift( { name : new O( "Change Me"), select : new O( select ) } );
-                }
-
-                DeclUI.buildUI( this, model, AltXML );
-
-                setInterval( function(){
-                        model.buttons()[ 1 ].name( "Changed" );
-                    }, 5000 );
+                DeclUI.buildUI( this, model, Layout );
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component

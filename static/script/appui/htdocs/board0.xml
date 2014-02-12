@@ -1,0 +1,7 @@
+<view>
+    <hlist bind="foreach:buttons">
+        <button>
+            <image class="rounded" bind="image:imageurl" size="60"></image>
+        </button>
+    </hlist>
+</view>
