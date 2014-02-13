@@ -42,6 +42,9 @@ require.def("sampleapp/appui/components/less-simple",
                 this._super("simplecomponent");
 
                 var model = {
+                    buttonSelected : function( event, buttonModel ){
+                        model.chosen.push( buttonModel );
+                    },
 
                     buttonFocused : function( event, buttonModel ){
                         model.description( buttonModel.description );

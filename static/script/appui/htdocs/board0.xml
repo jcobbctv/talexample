@@ -1,16 +1,15 @@
 <view>
     <vlist>
         <hlist class="centred" bind="foreach:buttons">
-            <button bind="event:{ focus : $parent.buttonFocused }">
+            <button bind="event:{ focus : $parent.buttonFocused, select : $parent.buttonSelected }">
                 <image class="rounded" bind="image:imageurl" size="60"></image>
                 <label bind="text:name"></label>
             </button>
         </hlist>
         <label class="centred" bind="text:description"></label>
         <hcarousel id="simplecarousel" bind="foreach:chosen">
-            <button bind="event:{ focus : $parent.buttonFocused }">
-                <image class="rounded" bind="image:imageurl" size="60"></image>
-                <label bind="text:name"></label>
+            <button class="rounded">
+                <image bind="image:imageurl" size="100"></image>
             </button>
         </hcarousel>
     </vlist>
