@@ -41,6 +41,12 @@ object {
     position: absolute;
 }
 
+.centred{
+    width : 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* List widgets */
 .horizontallist, .verticallist {
     position: relative;

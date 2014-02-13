@@ -42,15 +42,24 @@ require.def("sampleapp/appui/components/less-simple",
                 this._super("simplecomponent");
 
                 var model = {
+
+                    buttonFocused : function( event, buttonModel ){
+                        model.description( buttonModel.description );
+                    },
+
                     buttons : new OA( [
-                        { imageurl: "static/img/k1.jpeg" },
-                        { imageurl: "static/img/k2.jpeg" },
-                        { imageurl: "static/img/k3.jpeg" },
-                        { imageurl: "static/img/k4.jpeg" },
-                        { imageurl: "static/img/k5.jpeg" },
-                        { imageurl: "static/img/k6.jpeg" },
-                        { imageurl: "static/img/k7.jpeg" }
-                    ] )
+                        { name : "Mr.Sazzles", imageurl: "static/img/k1.jpeg", description: "He is Sazzy" },
+                        { name : "Formego", imageurl: "static/img/k2.jpeg", description: "Your new overlord" },
+                        { name : "Cronk", imageurl: "static/img/k3.jpeg", description: "Cronk! Cronk!" },
+                        { name : "LazloZ", imageurl: "static/img/k4.jpeg", description: "Hey It's Lazlo Zee" },
+                        { name : "Choicey", imageurl: "static/img/k5.jpeg", description: "Choc Ice Y?" },
+                        { name : "Fleet", imageurl: "static/img/k6.jpeg", description: "Go Fleet" },
+                        { name : "Arnold", imageurl: "static/img/k7.jpeg", description: "Boom! It's Arnold" }
+                    ] ),
+
+                    chosen : new OA( [] ),
+
+                    description : new O( "This is where the description goes." )
                 };
 
                 DeclUI.buildUI( this, model, Layout );

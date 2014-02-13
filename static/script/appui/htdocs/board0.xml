@@ -1,7 +1,17 @@
 <view>
-    <hlist bind="foreach:buttons">
-        <button>
-            <image class="rounded" bind="image:imageurl" size="60"></image>
-        </button>
-    </hlist>
+    <vlist>
+        <hlist class="centred" bind="foreach:buttons">
+            <button bind="event:{ focus : $parent.buttonFocused }">
+                <image class="rounded" bind="image:imageurl" size="60"></image>
+                <label bind="text:name"></label>
+            </button>
+        </hlist>
+        <label class="centred" bind="text:description"></label>
+        <hcarousel id="simplecarousel" bind="foreach:chosen">
+            <button bind="event:{ focus : $parent.buttonFocused }">
+                <image class="rounded" bind="image:imageurl" size="60"></image>
+                <label bind="text:name"></label>
+            </button>
+        </hcarousel>
+    </vlist>
 </view>
