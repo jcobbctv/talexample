@@ -52,7 +52,7 @@ require.def("sampleapp/appui/components/less-simple",
 
                     buttons : new OA( [
                         { name : "Mr.Sazzles", imageurl: "static/img/k1.jpeg", description: "He is Sazzy" },
-                        { name : "Formego", imageurl: "static/img/k2.jpeg", description: "Your new overlord" },
+                        { name : "Duck Hunter D", imageurl: "static/img/k2.jpeg", description: "Raiser of Gales" },
                         { name : "Cronk", imageurl: "static/img/k3.jpeg", description: "Cronk! Cronk!" },
                         { name : "LazloZ", imageurl: "static/img/k4.jpeg", description: "Hey It's Lazlo Zee" },
                         { name : "Choicey", imageurl: "static/img/k5.jpeg", description: "Choc Ice Y?" },
