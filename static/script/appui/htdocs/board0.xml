@@ -6,7 +6,7 @@
                 <label bind="text:name"></label>
             </button>
         </hlist>
-        <label class="centred" bind="text:description"></label>
+        <label class="centred" bind="text:computedDescription"></label>
         <hcarousel id="simplecarousel" bind="foreach:chosen">
             <button class="rounded">
                 <image bind="image:imageurl" size="100"></image>

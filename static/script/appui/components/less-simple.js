@@ -28,9 +28,10 @@ require.def("sampleapp/appui/components/less-simple",
         "antie/declui/declui",
         "antie/declui/observable",
         "antie/declui/observable-array",
+        "antie/declui/computed-observable",
         'text!sampleapp/appui/htdocs/board0.xml',
     ],
-    function (Component, DeclUI, O, OA, Layout ) {
+    function (Component, DeclUI, O, OA, CO, Layout ) {
 
         // All components extend Component
         return Component.extend({
@@ -65,6 +66,15 @@ require.def("sampleapp/appui/components/less-simple",
 
                     description : new O( "This is where the description goes." )
                 };
+
+                debugger;
+                model.computedDescription = new CO(
+                    function(){
+                        return "Cat Description:" + model.description();
+                    }
+                );
+
+
 
                 DeclUI.buildUI( this, model, Layout );
 
