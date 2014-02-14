@@ -1,7 +1,7 @@
 <view>
     <vlist>
         <hlist class="centred" bind="foreach:buttons">
-            <button bind="event:{ focus : $parent.buttonFocused, select : $parent.buttonSelected }">
+            <button bind="disabled:disabled, event:{ focus : $parent.buttonFocused, select : $parent.buttonSelected }">
                 <image class="rounded" bind="image:imageurl" size="60"></image>
                 <label bind="text:name"></label>
             </button>

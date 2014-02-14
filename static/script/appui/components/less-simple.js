@@ -44,6 +44,7 @@ require.def("sampleapp/appui/components/less-simple",
                 var model = {
                     buttonSelected : function( event, buttonModel ){
                         model.chosen.push( buttonModel );
+                        buttonModel.disabled( true );
                     },
 
                     buttonFocused : function( event, buttonModel ){
@@ -51,13 +52,13 @@ require.def("sampleapp/appui/components/less-simple",
                     },
 
                     buttons : new OA( [
-                        { name : "Mr.Sazzles", imageurl: "static/img/k1.jpeg", description: "He is Sazzy" },
-                        { name : "Duck Hunter D", imageurl: "static/img/k2.jpeg", description: "Raiser of Gales" },
-                        { name : "Cronk", imageurl: "static/img/k3.jpeg", description: "Cronk! Cronk!" },
-                        { name : "LazloZ", imageurl: "static/img/k4.jpeg", description: "Hey It's Lazlo Zee" },
-                        { name : "Choicey", imageurl: "static/img/k5.jpeg", description: "Choc Ice Y?" },
-                        { name : "Fleet", imageurl: "static/img/k6.jpeg", description: "Go Fleet" },
-                        { name : "Arnold", imageurl: "static/img/k7.jpeg", description: "Boom! It's Arnold" }
+                        { name : "Mr.Sazzles", imageurl: "static/img/k1.jpeg", disabled: O( false ), description: "He is Sazzy" },
+                        { name : "Duck Hunter D", imageurl: "static/img/k2.jpeg", disabled: O( false ), description: "Raiser of Gales" },
+                        { name : "Cronk", imageurl: "static/img/k3.jpeg", disabled: O( false ), description: "Cronk! Cronk!" },
+                        { name : "LazloZ", imageurl: "static/img/k4.jpeg", disabled: O( false ), description: "Hey It's Lazlo Zee" },
+                        { name : "Choicey", imageurl: "static/img/k5.jpeg", disabled: O( false ), description: "Choc Ice Y?" },
+                        { name : "Fleet", imageurl: "static/img/k6.jpeg", disabled: O( false ), description: "Go Fleet" },
+                        { name : "Arnold", imageurl: "static/img/k7.jpeg", disabled: O( false ), description: "Boom! It's Arnold" }
                     ] ),
 
                     chosen : new OA( [] ),
